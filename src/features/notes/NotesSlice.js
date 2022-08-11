@@ -23,7 +23,7 @@ export const updateNote = createAsyncThunk("notes/updateNote", async (data) => {
     const res = await axios.put(`https://safe-springs-86418.herokuapp.com/update_note/${data.id}`, note);
     console.log(res)
     // console.log(res.data)
-    // return res.data;
+    return res.data;
 })
 
 
@@ -52,14 +52,14 @@ export const noteSlice = createSlice({
         builder.addCase(fetchNotes.fulfilled, (state, action) => {
             state.isLoading = false;
             state.notes = action.payload;
-            // state.error = null
-            console.log(state.notes)
-            console.log(action)
+            state.error = null
+            // console.log(state.notes)
+            // console.log(action)
         });
         builder.addCase(fetchNotes.rejected, (state, action) => {
             state.isLoading = false;
             state.notes = [];
-            console.log(action)
+            // console.log(action)
             state.error = action.error.message
         });
 

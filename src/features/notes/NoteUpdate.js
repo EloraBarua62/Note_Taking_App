@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';
+import auth from '../../firebase.init';
 import { fetchNotes, updateNote } from './NotesSlice';
 
-const NoteUpdate = ({update , setUpdate}) => {
+const NoteUpdate = ({update , setUpdate ,setChange}) => {
 
     const [newTitle, setNewTitle] = useState(update.title);
     const [newNote, setNewNote] = useState(update.note);
@@ -11,20 +13,14 @@ const NoteUpdate = ({update , setUpdate}) => {
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
     const updatedDate = date + '.' + month + '.' + year;
-
-
     const dispatch = useDispatch();
-    useEffect(() => {
-            dispatch(fetchNotes(update.email));
-    }, [])
-    
-    
-    
+ 
     const handleUpdate = event =>{
         event.preventDefault();
         const id = update.id;
         const email = update.email;
         dispatch(updateNote({id ,email , newTitle , newNote , updatedDate}));
+        setChange(true);
         setUpdate({});
     } 
     return (

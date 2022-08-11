@@ -15,16 +15,18 @@ const NotesView = () => {
     const [noteObject, setNoteObject] = useState({});
     const [view, setView] = useState(false);
     const [update, setUpdate] = useState({});
-   const navigate = useNavigate();
-
+    const navigate = useNavigate();
+    const [change, setChange] = useState(false);
     const dispatch = useDispatch();
+
+
     useEffect(() => {
-        if(user?.email){
+        if (user?.email || change) {
             const email = user.email
             dispatch(fetchNotes(email));
-            // console.log(noteLists)
-        }        
-    },[dispatch,user])
+            setChange(false)
+        }
+    }, [dispatch, user, change])
 
     const handleView = (noteDetails) => {
         setView(true);
@@ -40,21 +42,21 @@ const NotesView = () => {
     const handleDelete = (id,email) => {
         console.log(id)
         dispatch(deleteNote(id,email));
-        
+        setChange(true)
     }
 
 
 
     return (
-        <div className='h-full bg-teal-900 mx-auto py-20'>
-            <h1 className='text-center text-3xl font-bold text-amber-300 uppercase pb-10'>Recent notes</h1>
+        <div className='h-full bg-amber-200 mx-auto py-20'>
+            <h1 className='text-center text-3xl font-bold text-slate-600 uppercase pb-10'>Recent notes</h1>
             <div className='grid grid-cols-1 xl:grid-cols-2 mb-20 gap-y-10'>
                 {
                     noteLists && noteLists.slice(0,6).map(noteDetails => <div
-                        className='flex flex-col bg-amber-300 w-3/5 border-0 rounded-md shadow-2xl mx-auto'>
+                        className='text-white flex flex-col bg-slate-800 w-3/5 border-0 rounded-md shadow-2xl mx-auto'>
                         <h1 className=' my-3 pl-3 text-lg font-semibold'>{noteDetails.title} </h1>
 
-                        <div className='w-full h-full bg-yellow-200 pl-3 '>
+                        <div className='w-full h-full bg-slate-700 pl-3 '>
                             <p className='py-10 text-lg'>{noteDetails.note}</p>
                             <p className='pb-10'>Created on : {noteDetails.noteDate}</p>
                             <label type="submit" onClick={() => handleView(noteDetails)} for="view-modal" className=' text-4xl font-semibold  pr-3'><MdManageSearch></MdManageSearch></label>
@@ -66,7 +68,7 @@ const NotesView = () => {
             </div>
 
             {
-                Object.keys(update).length!==0 && update.constructor === Object && <NoteUpdate update={update} setUpdate={setUpdate}></NoteUpdate>
+                Object.keys(update).length!==0 && update.constructor === Object && <NoteUpdate update={update} setUpdate={setUpdate} setChange={setChange}></NoteUpdate>
             }
 
             {
@@ -85,7 +87,7 @@ const NotesView = () => {
             }
 
             {
-                user?.email && <Link to='/all_notes' className='text-3xl pr-10 font-bold text-amber-300 float-right'>See All</Link> 
+                user?.email && <Link to='/all_notes' className='text-3xl pr-10 font-bold text-amber-500 float-right'>See All</Link> 
             }
             
             

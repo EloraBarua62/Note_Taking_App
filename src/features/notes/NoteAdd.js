@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import { IoCheckmarkDoneSharp } from 'react-icons/io5';
 import { addNote, fetchNotes } from './NotesSlice';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,17 +15,17 @@ const NoteAdd = () => {
     let year = newDate.getFullYear();
     const dispatch = useDispatch();
     const noteDate = date + '.' + month + '.' + year;
-    // console.log(noteDate)
+    const [change , setChange] = useState(false); 
 
 
 
-    // useEffect(() => {
-    //     if (user?.email) {
-    //         const email = user.email
-    //         dispatch(fetchNotes(email));
-    //         // console.log(noteLists)
-    //     }
-    // }, [dispatch, user])
+    useEffect(() => {
+        if (user?.email || change) {
+            const email = user.email
+            dispatch(fetchNotes(email));
+            setChange(false)
+        }
+    }, [dispatch, user , change])
 
 
     const navigate = useNavigate();
@@ -38,9 +36,8 @@ const NoteAdd = () => {
             const data = { email ,title, note, noteDate }
             setTitle('Untitled Note');
             setNote('');
-            // dispatch(fetchNotes(email))
             dispatch(addNote(data));
-            
+            setChange(true);
         }
         else{
             navigate('/login');
