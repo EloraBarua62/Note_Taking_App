@@ -73,13 +73,13 @@ const AllNotes = () => {
                             }                          
                         })
                         .map(noteDetails => <div
-                            className='bg-amber-200 w-3/5 border rounded-md shadow-2xl mx-auto'>
+                            className='bg-amber-200 w-3/4 border rounded-md shadow-2xl mx-auto'>
                             <h1 className='text-slate-700 my-3 pl-3 text-lg font-semibold'>{noteDetails.title} </h1>
 
-                            <div className='w-full bg-amber-100 pl-3 text-slate-700'>
-                                <p className='py-10 text-lg'>{noteDetails.note}</p>
+                            <div className='w-full h-60 bg-amber-100 pl-3 text-slate-700 overflow-y-scroll'>
+                                <p className='w-full py-10 text-lg'>{noteDetails.note}</p>
                                 <p className='pb-10 font-semibold'>Created on : {noteDetails.noteDate}</p>
-                                <label type="submit" onClick={() => handleView(noteDetails)} for="view-modal" className=' text-4xl font-semibold  pr-3'><MdManageSearch></MdManageSearch></label>
+                                <label type="submit" onClick={() => handleView(noteDetails)} for="view-modal" className=' text-4xl font-semibold pr-3'><MdManageSearch></MdManageSearch></label>
                                 <label type="submit" onClick={() => handleUpdate(noteDetails._id, noteDetails.email, noteDetails.title, noteDetails.note)} for="update-modal" className=' text-2xl font-semibold  pr-3'><FaRegEdit></FaRegEdit></label>
                                 <button type="submit" onClick={() => handleDelete(noteDetails._id, noteDetails.email)} className=' text-2xl font-semibold '><RiDeleteBin6Line></RiDeleteBin6Line></button>
                             </div>

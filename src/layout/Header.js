@@ -19,7 +19,7 @@ const Header = () => {
                     <a className='italic text-3xl font-bold'>Note<span className='text-red-400'>Friend</span> </a>
                 </Link>
             </div>
-            <div className='flex justify-center items-center gap-10'>
+            <div className='flex justify-center items-center gap-3 md:gap-10'>
                 <Link to='/'>Home</Link>
                 {/* <Link to='/notes-view'>All notes</Link> */}
                 {
@@ -29,7 +29,7 @@ const Header = () => {
                     <Link to='/login'>Login</Link>
                 }
                 {
-                    user && <h1 className='text-red-400'>{user?.displayName}</h1> 
+                    user && <h1 className='text-red-400 hidden md:block'>{user?.displayName}</h1> 
                 }
                 
                 

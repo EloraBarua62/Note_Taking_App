@@ -53,11 +53,11 @@ const NotesView = () => {
             <div className='grid grid-cols-1 xl:grid-cols-2 mb-20 gap-y-10'>
                 {
                     noteLists && noteLists.slice(0,6).map(noteDetails => <div
-                        className='text-white flex flex-col bg-slate-800 w-3/5 border-0 rounded-md shadow-2xl mx-auto'>
+                        className='text-white flex flex-col bg-slate-800 w-3/4 border-0 rounded-md shadow-2xl mx-auto'>
                         <h1 className=' my-3 pl-3 text-lg font-semibold'>{noteDetails.title} </h1>
 
-                        <div className='w-full h-full bg-slate-700 pl-3 '>
-                            <p className='py-10 text-lg'>{noteDetails.note}</p>
+                        <div className='w-full h-60 bg-slate-700 pl-3 overflow-y-auto'>
+                            <p className='w-full py-10 text-lg mr-5'>{noteDetails.note}</p>
                             <p className='pb-10'>Created on : {noteDetails.noteDate}</p>
                             <label type="submit" onClick={() => handleView(noteDetails)} for="view-modal" className=' text-4xl font-semibold  pr-3'><MdManageSearch></MdManageSearch></label>
                             <label type="submit" onClick={() => handleUpdate(noteDetails._id,noteDetails.email, noteDetails.title, noteDetails.note)} for="update-modal" className=' text-2xl font-semibold  pr-3'><FaRegEdit></FaRegEdit></label>
