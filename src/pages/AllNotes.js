@@ -76,7 +76,7 @@ const AllNotes = () => {
                             className='bg-amber-200 w-3/4 border rounded-md shadow-2xl mx-auto'>
                             <h1 className='text-slate-700 my-3 pl-3 text-lg font-semibold'>{noteDetails.title} </h1>
 
-                            <div className='w-full h-60 bg-amber-100 pl-3 text-slate-700 overflow-y-scroll'>
+                            <div className='w-full h-60 bg-amber-100 pl-3 text-slate-700 overflow-y-scroll '>
                                 <p className='w-full py-10 text-lg'>{noteDetails.note}</p>
                                 <p className='pb-10 font-semibold'>Created on : {noteDetails.noteDate}</p>
                                 <label type="submit" onClick={() => handleView(noteDetails)} for="view-modal" className=' text-4xl font-semibold pr-3'><MdManageSearch></MdManageSearch></label>
