@@ -16,11 +16,11 @@ const Index = () => {
             <Header></Header>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
-                <Route path="/notes-view" element={<NotesView></NotesView>}></Route>
-                <Route path="/login" element={<Login></Login>}></Route>
-                <Route path="/signup" element={<SignUp></SignUp>}></Route>
-                <Route path="/all_notes" element={<AllNotes></AllNotes>}></Route>
-                <Route path="/forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
+                <Route path="notes-view" element={<NotesView></NotesView>}></Route>
+                <Route path="login" element={<Login></Login>}></Route>
+                <Route path="signup" element={<SignUp></SignUp>}></Route>
+                <Route path="all_notes" element={<AllNotes></AllNotes>}></Route>
+                <Route path="forget_password" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="*" element={<Error></Error>}></Route>
             </Routes>
             <Footer></Footer>

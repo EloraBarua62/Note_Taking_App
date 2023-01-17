@@ -1,9 +1,7 @@
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 const { default: axios } = require("axios");
 
-export const fetchNotes = createAsyncThunk(
-  "notes/fetchNotes",
-  async (email) => {
+export const fetchNotes = createAsyncThunk("notes/fetchNotes",async (email) => {
     const res = await axios.get(
       `https://note-taking-app-server.onrender.com/all_notes/${email}`
     );
