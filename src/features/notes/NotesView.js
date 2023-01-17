@@ -53,7 +53,7 @@ const NotesView = () => {
             <div className='grid grid-cols-1 xl:grid-cols-2 mb-20 gap-y-10'>
                 {
                     noteLists && noteLists.slice(0,6).map(noteDetails => <div
-                        className='text-white flex flex-col bg-slate-800 w-3/4 border-0 rounded-md shadow-2xl mx-auto'>
+                        className='text-white flex flex-col bg-slate-800 w-3/4 sm:w-1/2 md:w-3/4 border-0 rounded-md shadow-2xl mx-auto'>
                         <h1 className=' my-3 pl-3 text-lg font-semibold'>{noteDetails.title} </h1>
 
                         <div className='w-full h-60 bg-slate-700 pl-3 overflow-y-auto'>
